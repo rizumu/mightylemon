@@ -7,7 +7,8 @@ setup(
     author='brosner',
     author_email='',
     url='http://github.com/rizumu/mightylemon/tree/master',
-    packages=find_packages(),
+    package_dir = {'': 'apps'},
+    packages=['blog'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
