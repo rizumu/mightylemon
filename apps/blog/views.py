@@ -18,7 +18,7 @@ def homepage(request, **kwargs):
     defaults = {
         "date_field": "pub_date",
         "num_latest": request.blog.settings.posts_per_page,
-        "template_name": "homepage.html",
+        "template_name": "blog/blog_homepage.html",
         "template_object_name": "posts",
     }
     defaults.update(kwargs)
