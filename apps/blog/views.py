@@ -1,5 +1,6 @@
 
 from django.views.generic import date_based
+from django.views.generic import list_detail
 from blog.models import Post
 from django.template import RequestContext
 from django.shortcuts import render_to_response
@@ -35,3 +36,11 @@ def archive_full(request, **kwargs):
         'posts': kwargs["queryset"], # all posts
     }, context_instance=RequestContext(request))
 archive_full = privileged_post_queryset(archive_full)
+
+def permalinked(request, **kwargs):
+    return list_detail.object_detail(request,
+                                     queryset=kwargs['queryset'],
+                                     slug=kwargs['permalink'],
+                                     slug_field='permalink',
+                                     template_object_name="post")
+permalinked = privileged_post_queryset(permalinked)
