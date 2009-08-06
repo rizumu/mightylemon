@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 from django.db import models
@@ -45,12 +44,13 @@ class BlogSettings(models.Model):
 class PostManager(models.Manager):
     def active(self):
         return self.filter(active=True)
-        
+
 
 class Post(models.Model):
     blog = models.ForeignKey(Blog, related_name=_("posts"))
     title = models.CharField(_("title"), max_length=100)
     slug = models.SlugField(_("slug"), unique=True)
+    intro = models.CharField(_("intro"), max_length=512, blank=True, null=True)
     body = models.TextField(_("body"))
     markup_type = models.CharField(max_length=10, choices=(
         ("html", "HTML"),
